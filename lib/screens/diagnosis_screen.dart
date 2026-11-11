@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../data/expert_rules.dart';
-import '../data/certainty_factor_engine.dart';
 import 'result_screen.dart';
 
 class DiagnosisScreen extends StatefulWidget {
@@ -33,8 +32,8 @@ class _DiagnosisScreenState extends State<DiagnosisScreen> {
       if (_currentIndex < _keys.length - 1) {
         _currentIndex++;
       } else {
-        // Selesai kuesioner, evaluasi dengan Forward Chaining + Certainty Factor
-        var result = CertaintyFactorEngine.evaluateWithCF(_selectedSymptoms);
+        // Selesai kuesioner, evaluasi dengan Forward Chaining
+        var result = ExpertSystemEngine.evaluateDiagnosis(_selectedSymptoms);
         
         Navigator.pushReplacement(
           context,
